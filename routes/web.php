@@ -89,7 +89,7 @@ Route::prefix('training')->group(function () {
     });
 
     Route::get('HR', function(){
-    return 'HR';
+    return 'HR home page';
     });
 
     Route::get('ICT', function(){
