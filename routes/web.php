@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ExampleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -42,6 +42,10 @@ Route::prefix('products')->group(function () {
         Route::get('projector', function(){
         return 'projectors page';
         });
+});
+// write a fall back to come back agin to the page i want
+Route::fallback(function(){
+    return redirect('/');
 });*/
 Route::get('/', function () {
     return view('welcome');
@@ -103,7 +107,19 @@ Route::prefix('training')->group(function () {
     Route::get('logistics', function(){
     return 'logistics home page';
     });
-});    
+});  
 
 
+Route::get('cv', function(){
+    return view('cv');
+    });
 
+Route::get('login', function(){
+      return view('login');
+      });
+  
+Route::post('receive', function(){
+        return "Data receive";
+        })->name('receive') ;   
+
+Route::get('test1', [ExampleController::class, 'test1']);
