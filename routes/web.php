@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExampleController;
+use App\Http\Controllers\AddCar;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -11,6 +12,8 @@ use App\Http\Controllers\ExampleController;
 | routes are loaded by the RouteServiceProvider and all of them will
 | be assigned to the "web" middleware group. Make something great!
 |
+
+--------------session2-------------------------------------------------------------------------
 */
 // regural expression------need search--
 // Route::get ('user/{name}/{age?}',function ($name,$age=0){
@@ -47,10 +50,14 @@ Route::prefix('products')->group(function () {
 Route::fallback(function(){
     return redirect('/');
 });*/
+
+
 Route::get('/', function () {
     return view('welcome');
 });
 
+
+// ----------------task2-----------------------------------------------------------
 Route::get('about', function () {
     return "<h1> This is a laravel learning project </h1>";
 });
@@ -109,6 +116,7 @@ Route::prefix('training')->group(function () {
     });
 });  
 
+// ----------session3---------------------------------------------------------------------------------------------------
 
 Route::get('cv', function(){
     return view('cv');
@@ -123,3 +131,11 @@ Route::post('receive', function(){
         })->name('receive') ;   
 
 Route::get('test1', [ExampleController::class, 'test1']);
+
+// ---------------task3-------------------------------------------------------------------------------------------------
+
+
+// This route is to display addCar page (in views/addCar.blade.php) that has been taken from the function addcarpage in AddCar controller 
+Route::get('addCar', [AddCar::class, 'AddCarPage']);
+// This route is to display the data taken from the route addCar by the (request) in AddCar controller task3 function
+Route::post('showAddCar', [AddCar::class, 'task3'])->name('showAddCar');
