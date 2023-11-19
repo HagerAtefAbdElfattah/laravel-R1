@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\AddCar;
+use App\Http\Controllers\CarController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -139,3 +140,8 @@ Route::get('test1', [ExampleController::class, 'test1']);
 Route::get('addCar', [AddCar::class, 'AddCarPage']);
 // This route is to display the data taken from the route addCar by the (request) in AddCar controller task3 function
 Route::post('showAddCar', [AddCar::class, 'task3'])->name('showAddCar');
+
+
+// ------------Session4------------------------------------------------------------------------------------
+Route::get('CarShow', [CarController::class, 'index']);
+Route::post('Cars', [CarController::class, 'store'])->name('Cars');
