@@ -10,7 +10,7 @@ class AddCar extends Controller
         return view("addcar");
     }
 
-
+//  ------------- the name of the inputs have been changed in Session 4   ----------------
     public function task3(){
 
        $title = request("title");
