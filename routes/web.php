@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\AddCar;
 use App\Http\Controllers\CarController;
+use App\Http\Controllers\NewsController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -145,3 +147,10 @@ Route::post('showAddCar', [AddCar::class, 'task3'])->name('showAddCar');
 // ------------Session4------------------------------------------------------------------------------------
 Route::get('CarShow', [CarController::class, 'index']);
 Route::post('Cars', [CarController::class, 'store'])->name('Cars');
+
+
+// ----------------task 4--------------------------------------------------------------------------------------------------
+
+
+Route::get('addNews', [NewsController::class, 'create']);
+Route::post('News', [NewsController::class, 'store'])->name('News');
