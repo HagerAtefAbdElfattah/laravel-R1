@@ -30,7 +30,7 @@
     <div class="checkbox">
       <label><input type="checkbox" name="published" @checked($car->published) > Published</label>
     </div>
-    <button type="submit" class="btn btn-default">Add</button>
+    <button type="submit" class="btn btn-default">update</button>
   </form>
 </div>
 

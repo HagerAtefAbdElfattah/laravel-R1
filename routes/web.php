@@ -161,3 +161,8 @@ Route::get('cars', [CarController::class, 'index']);
 Route::get('editCar/{id}', [CarController::class, 'edit']);
 Route::put('updateCar/{id}', [CarController::class, 'update'])->name('updateCar');
 
+// --------------task 5-----------------------------------------------------------------------------------------------------------
+
+Route::get('news', [NewsController::class, 'index']);
+Route::get('editNews/{id}', [NewsController::class, 'edit']);
+Route::put('updateNews/{id}', [NewsControllerntroller::class, 'update'])->name('updateNews');
