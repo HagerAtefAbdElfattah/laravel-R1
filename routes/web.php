@@ -138,19 +138,26 @@ Route::get('test1', [ExampleController::class, 'test1']);
 // ---------------task3-------------------------------------------------------------------------------------------------
 
 
-// This route is to display addCar page (in views/addCar.blade.php) that has been taken from the function addcarpage in AddCar controller 
-Route::get('addCar', [AddCar::class, 'AddCarPage']);
-// This route is to display the data taken from the route addCar by the (request) in AddCar controller task3 function
-Route::post('showAddCar', [AddCar::class, 'task3'])->name('showAddCar');
+// // This route is to display addCar page (in views/addCar.blade.php) that has been taken from the function addcarpage in AddCar controller 
+// Route::get('addCar', [AddCar::class, 'AddCarPage']);
+// // This route is to display the data taken from the route addCar by the (request) in AddCar controller task3 function
+// Route::post('showAddCar', [AddCar::class, 'task3'])->name('showAddCar');
 
 
-// ------------Session4------------------------------------------------------------------------------------
-Route::get('CarShow', [CarController::class, 'index']);
-Route::post('Cars', [CarController::class, 'store'])->name('Cars');
+// // ------------Session4------------------------------------------------------------------------------------
+// Route::get('CarShow', [CarController::class, 'index']);
+// Route::post('Cars', [CarController::class, 'store'])->name('Cars');
 
 
-// ----------------task 4--------------------------------------------------------------------------------------------------
+// // ----------------task 4--------------------------------------------------------------------------------------------------
 
 
 Route::get('addNews', [NewsController::class, 'create']);
 Route::post('News', [NewsController::class, 'store'])->name('News');
+
+// --------------------session5------------------------------------------------------
+
+Route::get('cars', [CarController::class, 'index']);
+Route::get('editCar/{id}', [CarController::class, 'edit']);
+Route::put('updateCar/{id}', [CarController::class, 'update'])->name('updateCar');
+
