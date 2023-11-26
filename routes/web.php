@@ -155,10 +155,12 @@ Route::get('test1', [ExampleController::class, 'test1']);
 Route::get('addNews', [NewsController::class, 'create']);
 Route::post('News', [NewsController::class, 'store'])->name('News');
 
-// --------------------session5------------------------------------------------------
+// --------------------session 5 $ 6------------------------------------------------------
 
 Route::get('cars', [CarController::class, 'index']);
 Route::get('editCar/{id}', [CarController::class, 'edit']);
+Route::get('carDetails/{id}', [CarController::class, 'show'])->name('carDetails');
+Route::get('deleteCar/{id}', [CarController::class, 'destroy']);
 Route::put('updateCar/{id}', [CarController::class, 'update'])->name('updateCar');
 
 // --------------task 5-----------------------------------------------------------------------------------------------------------

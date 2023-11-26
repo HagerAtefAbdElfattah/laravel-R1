@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>Cars</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -20,6 +20,8 @@
         <th>Content</th>
         <th>Published</th>
         <th>Edit</th>
+        <th>ShowaCar</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -35,6 +37,8 @@
             @endif
         </td>
         <td><a href="editCar/{{ $car->id }}">Edit</a></td>
+        <td><a href="carDetails/{{ $car->id }}">CarDetails</a></td>
+        <td><a href="deleteCar/{{ $car->id }}">Delete</a></td>
       </tr>
         @endforeach
     </tbody>
