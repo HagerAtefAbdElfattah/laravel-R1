@@ -7,7 +7,7 @@ use App\Models\Car;
 
 class CarController extends Controller
 {
-    private $columns = ['carTitle', 'description'];
+    private $columns = ['carTitle','price', 'description', 'published'];
     /**
      * Display a listing of the resource.
      */
@@ -22,7 +22,7 @@ class CarController extends Controller
      */
     public function create()
     {
-        //
+       return view('addCar');
     }
 
     /**
@@ -32,6 +32,7 @@ class CarController extends Controller
     {
        $car = new Car;
        $car->carTitle =$request->carTitle;
+       $car->price = $request->price;
        $car->description =$request->description;
        if(isset($request->published)){
         $car->published = true;
@@ -39,7 +40,7 @@ class CarController extends Controller
         $car->published = false;
        }
        $car->save();
-       return "Car title is ".$request->carTitle;
+       return '<script>alert("Your data has been inserted successfully")</script>';
     }
 
     /**
@@ -65,7 +66,9 @@ class CarController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        car::where('id', $id)->update($request->only($this->columns));
+        $data = $request->only($this->columns);
+        $data['published']=isset($data['published'])? true:false;
+        car::where('id', $id)->update($data);
         return '<script>alert("updated successfully")</script>';
     }
 

@@ -28,6 +28,7 @@
       <tr> 
         @foreach($cars as $car)
         <td>{{ $car->carTitle }}</td>
+        <td>{{ $car->price }}</td>
         <td>{{ $car->description }}</td>
         <td>
             @if( $car->published)

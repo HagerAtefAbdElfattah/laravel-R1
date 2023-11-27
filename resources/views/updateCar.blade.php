@@ -21,7 +21,7 @@
     </div>
     <div class="form-group">
       <label for="price">Price:</label>
-      <input type="number" class="form-control" id="price" placeholder="Enter Price" name="price" >
+      <input type="number" class="form-control" id="price" placeholder="Enter Price" name="price" value="{{$car->price}}" >
     </div>
     <div class="form-group">
         <label for="description">Description:</label>

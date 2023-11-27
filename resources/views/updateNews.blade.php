@@ -10,7 +10,7 @@
 
 	<body>
 		<div class="container">
-			<form method="POST" action="" class="m-auto" style="max-width:600px" >
+			<form method="POST" action="{{route('updateNews',$editNews->id)}}" class="m-auto" style="max-width:600px" >
             @csrf
             @method('put')
 				<h3 class="my-4">Edit News</h3>

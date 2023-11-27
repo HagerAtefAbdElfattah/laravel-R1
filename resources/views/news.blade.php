@@ -21,6 +21,8 @@
         <th>Author</th>
         <th>Published</th>
         <th>Edit</th>
+        <th>NewsDetails</th>
+        <th>Delete</th>
       </tr>
     </thead>
     <tbody>
@@ -37,6 +39,8 @@
             @endif
         </td>
         <td><a href="editNews/{{ $news->id }}">Edit</a></td>
+        <td><a href="newsDetails/{{ $news->id }}">Details</a></td>
+        <td><a href="deleteNews/{{ $news->id }}">Delete</a></td>
       </tr>
         @endforeach
     </tbody>

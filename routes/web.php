@@ -145,9 +145,9 @@ Route::get('test1', [ExampleController::class, 'test1']);
 
 
 // // ------------Session4------------------------------------------------------------------------------------
-// Route::get('CarShow', [CarController::class, 'index']);
-// Route::post('Cars', [CarController::class, 'store'])->name('Cars');
 
+Route::get('addCar', [CarController::class, 'create']);
+Route::post('storeCar',[CarController::class, 'store'])->name('storeCar');
 
 // // ----------------task 4--------------------------------------------------------------------------------------------------
 
@@ -159,12 +159,20 @@ Route::post('News', [NewsController::class, 'store'])->name('News');
 
 Route::get('cars', [CarController::class, 'index']);
 Route::get('editCar/{id}', [CarController::class, 'edit']);
+Route::put('updateCar/{id}', [CarController::class, 'update'])->name('updateCar');
+
+    // ------Task 6 show car -----------------------------------------
 Route::get('carDetails/{id}', [CarController::class, 'show'])->name('carDetails');
 Route::get('deleteCar/{id}', [CarController::class, 'destroy']);
-Route::put('updateCar/{id}', [CarController::class, 'update'])->name('updateCar');
+
 
 // --------------task 5-----------------------------------------------------------------------------------------------------------
 
 Route::get('news', [NewsController::class, 'index']);
 Route::get('editNews/{id}', [NewsController::class, 'edit']);
-Route::put('updateNews/{id}', [NewsControllerntroller::class, 'update'])->name('updateNews');
+Route::put('updateNews/{id}', [NewsController::class, 'update'])->name('updateNews');
+
+
+// --------------Task 6 show news-----------------------------------------------------------------
+Route::get('newsDetails/{id}', [NewsController::class, 'show'])->name('newsDetails');
+Route::get('deleteNews/{id}', [NewsController::class, 'destroy']);
