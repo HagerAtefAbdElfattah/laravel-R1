@@ -5,6 +5,7 @@ use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\AddCar;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\NewsController;
+use App\Models\News;
 
 /*
 |--------------------------------------------------------------------------
@@ -173,11 +174,19 @@ Route::get('editNews/{id}', [NewsController::class, 'edit']);
 Route::put('updateNews/{id}', [NewsController::class, 'update'])->name('updateNews');
 
 
-// --------------Task 6 show news-----------------------------------------------------------------
+// --------------Task 6 show news---------------------------------------------------------------------------------------------------
+
 Route::get('newsDetails/{id}', [NewsController::class, 'show'])->name('newsDetails');
 Route::get('deleteNews/{id}', [NewsController::class, 'destroy']);
 
-// --------------Session 7----------------------------------
+// --------------Session 7----------------------------------------------------------------------------------------------------------
+
 Route::get('trashedCar', [CarController::class, 'trashed']);
 Route::get('restoreCar/{id}', [CarController::class, 'restore']);
 Route::get('forceDelete/{id}', [CarController::class, 'forceDelete']);
+
+// -------------Task7---------------------------------------------------------------------------------------------------------------
+
+Route::get('trashedNews', [NewsController::class, 'trashed']);
+Route::get('restoreNews/{id}', [NewsController::class, 'restore']);
+Route::get('forceDeleteNews/{id}', [NewsController::class, 'forceDelete']);

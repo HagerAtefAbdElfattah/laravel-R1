@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>News</title>
+  <title> Trashed News</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -22,13 +22,12 @@
         <th>Published</th>
         <th>Edit</th>
         <th>NewsDetails</th>
-        <th>Delete</th>
-        <th>PermanentlyDelete</th>
+        <th>Restore</th>
       </tr>
     </thead>
     <tbody>
       <tr> 
-        @foreach($showNews as $news)
+        @foreach($news as $news)
         <td>{{ $news->title }}</td>
         <td>{{ $news->content }}</td>
         <td>{{ $news->author }}</td>
@@ -41,8 +40,8 @@
         </td>
         <td><a href="editNews/{{ $news->id }}">Edit</a></td>
         <td><a href="newsDetails/{{ $news->id }}">Details</a></td>
-        <td><a href="deleteNews/{{ $news->id }}">Delete</a></td>
-        <td><a href="forceDeleteNews/{{ $news->id }}">Delete</a></td>
+        <td><a href="restoreNews/{{ $news->id }}">Restore</a></td>
+      
       </tr>
         @endforeach
     </tbody>

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Models\News;
 
@@ -30,16 +30,25 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        $news = new News ;
-        $news->title = $request->title;
-        $news->content = $request->content;
-        $news->author = $request->author;
-        if(isset($request->published)){
-         $news->published = true;
-        }else{
-         $news->published = false;
-        }
-        $news->save();
+        // $news = new News ;
+        // $news->title = $request->title;
+        // $news->content = $request->content;
+        // $news->author = $request->author;
+        // if(isset($request->published)){
+        //  $news->published = true;
+        // }else{
+        //  $news->published = false;
+        // }
+        // $news->save();
+
+        $data =$request->only($this->columns);
+        $data['published']=isset($data['published'])? true:false;
+        $request->validate([
+        'title'=> 'required|string',
+        'content'=> 'required|string',
+        'author'=> 'required|string|max:100'
+        ]);
+        News::create($data);
         return"<h1>". $request->title."<h1>" . " is your news title and here is the content: " . "<br>" . $request->content . "<br>" . "<br>" . "<br>" . "Author: " . $request->author;
     }
 
@@ -80,4 +89,34 @@ class NewsController extends Controller
         News::where('id', $id)->delete();
        return '<script>alert("The news has been deleted successfully")</script>';
     }
+
+    
+    /**
+     * The trashed data.
+     */
+    public function trashed() 
+    {
+        $news= News::onlyTrashed()->get();
+       return view('trashedNews',compact('news'));
+    }
+
+    
+    /**
+     * To restore the soft deleted data.
+     */
+    public function restore(string $id) : RedirectResponse
+    {
+        News:: where('id', $id )->restore();
+        return redirect('news');
+    }
+
+    /**
+     * Remove the specified resource from storage permanently.
+     */
+    
+     public function forceDelete(string $id): RedirectResponse
+     {
+     News::where('id', $id)->forceDelete();
+     return redirect('news');
+     }
 }

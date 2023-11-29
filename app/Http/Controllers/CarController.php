@@ -44,6 +44,7 @@ class CarController extends Controller
     //    $car->save();
     $data = $request->only($this->columns);
     $data['published'] = isset($data['published'])? true:false;
+    
           $request->validate([
             'carTitle'=>'Required|string|max:100',
             'price' => 'Required|integer',
@@ -93,14 +94,17 @@ class CarController extends Controller
 
 
     /**
-     *return the trashed data.
+     * The trashed data.
      */
     public function trashed() 
     {
         $cars= Car::onlyTrashed()->get();
-       return view('trashedCar',compact('cars'));;
+       return view('trashedCar',compact('cars'));
     }
 
+    /**
+     * To restore the soft deleted data.
+     */
     public function restore(string $id) : RedirectResponse
     {
         Car:: where('id', $id )->restore();

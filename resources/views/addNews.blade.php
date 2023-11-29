@@ -15,15 +15,30 @@
 				<h3 class="my-4">Insert News</h3>
 				<hr class="my-4" />
 				<div class="form-group mb-3 row"><label for="title2" class="col-md-5 col-form-label">News Title</label>
-					<div class="col-md-7"><input type="text" class="form-control form-control-lg" id="title2" name="title" required></div>
+					<div class="col-md-7"><input type="text" class="form-control form-control-lg" id="title2" name="title" required value="{{ old('title') }}"></div>
+					@error('title')
+                     <div class="alert alert-warning" role="alert">
+                        {{$message}}
+                     </div>
+                    @enderror
 				</div>
 				<hr class="bg-transparent border-0 py-1" />
 				<div class="form-group mb-3 row"><label for="content4" class="col-md-5 col-form-label">Content</label>
-					<div class="col-md-7"><textarea class="form-control form-control-lg" id="content4" name="content" required></textarea></div>
+					<div class="col-md-7"><textarea class="form-control form-control-lg" id="content4" name="content" required>{{ old('content') }}</textarea></div>
+					@error('content')
+                     <div class="alert alert-warning" role="alert">
+                      {{$message}}
+                     </div>
+                    @enderror
 				</div>
 				<hr class="bg-transparent border-0 py-1" />
 				<div class="form-group mb-3 row"><label for="price6" class="col-md-5 col-form-label">Author</label>
-					<div class="col-md-7"><input type="text" class="form-control form-control-lg" id="price6" name="author"></div>
+					<div class="col-md-7"><input type="text" class="form-control form-control-lg" id="price6" required name="author" value="{{ old('author') }}"></div>
+					@error('author')
+                     <div class="alert alert-warning" role="alert">
+                      {{$message}}
+                     </div>
+                    @enderror
 				</div>
 				<hr class="bg-transparent border-0 py-1" />
 				<div class="form-group mb-3 row"><label for="model7" class="col-md-5 col-form-label">Published</label>
