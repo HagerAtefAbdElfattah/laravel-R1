@@ -176,3 +176,8 @@ Route::put('updateNews/{id}', [NewsController::class, 'update'])->name('updateNe
 // --------------Task 6 show news-----------------------------------------------------------------
 Route::get('newsDetails/{id}', [NewsController::class, 'show'])->name('newsDetails');
 Route::get('deleteNews/{id}', [NewsController::class, 'destroy']);
+
+// --------------Session 7----------------------------------
+Route::get('trashedCar', [CarController::class, 'trashed']);
+Route::get('restoreCar/{id}', [CarController::class, 'restore']);
+Route::get('forceDelete/{id}', [CarController::class, 'forceDelete']);

@@ -20,10 +20,8 @@
         <th>Price</th>
         <th>Content</th>
         <th>Published</th>
-        <th>Edit</th>
-        <th>ShowaCar</th>
+        <th>Restore</th>
         <th>Delete</th>
-        <th>ForceDelete</th>
       </tr>
     </thead>
     <tbody>
@@ -39,10 +37,8 @@
             no
             @endif
         </td>
-        <td><a href="editCar/{{ $car->id }}">Edit</a></td>
-        <td><a href="carDetails/{{ $car->id }}">CarDetails</a></td>
+        <td><a href="restoreCar/{{ $car->id }}">Restore</a></td>
         <td><a href="deleteCar/{{ $car->id }}">Delete</a></td>
-        <td><a href="forceDelete/{{ $car->id }}">ForceDelete</a></td>
       </tr>
         @endforeach
     </tbody>
@@ -50,4 +46,3 @@
 </div>
 
 </body>
-</html>
