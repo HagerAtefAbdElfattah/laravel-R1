@@ -190,3 +190,8 @@ Route::get('forceDelete/{id}', [CarController::class, 'forceDelete']);
 Route::get('trashedNews', [NewsController::class, 'trashed']);
 Route::get('restoreNews/{id}', [NewsController::class, 'restore']);
 Route::get('forceDeleteNews/{id}', [NewsController::class, 'forceDelete']);
+
+// -------------------Ssseion8--------------------------------------------------------
+
+Route::get('showUpload', [ExampleController::class, 'showUpload']);
+Route::post('upload', [ExampleController::class, 'upload'])->name('upload');

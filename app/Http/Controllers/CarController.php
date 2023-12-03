@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Car;
+use App\Traits\Common;
 use Symfony\Contracts\Service\Attribute\Required;
 
 class CarController extends Controller
 {
-    private $columns = ['carTitle','price', 'description', 'published'];
+    use Common;
+    private $columns = ['carTitle','price', 'description', 'published','image'];
     /**
      * Display a listing of the resource.
      */
@@ -42,16 +44,26 @@ class CarController extends Controller
     //     $car->published = false;
     //    }
     //    $car->save();
-    $data = $request->only($this->columns);
-    $data['published'] = isset($data['published'])? true:false;
-    
-          $request->validate([
+        //   $data = $request->only($this->columns);
+        //   $data['published'] = isset($data['published'])? true:false;
+        $messages=[
+            'carTitle.required'=>'Title is required',
+            'price.required'=>'This is A Number',
+            'description.required'=> 'يجب ادخال نص دون ارقام',
+            ];
+         $data = $request->validate([
             'carTitle'=>'Required|string|max:100',
             'price' => 'Required|integer',
-            'description'=>'Required|string'
-          ]);
+            'description'=>'Required|string',
+            'image' => 'required|mimes:png,jpg,jpeg|max:2048',
+             ], $messages);
+
+             $fileName = $this->uploadFile($request->image, 'assets\images');
+          $data['image']=$fileName;
+          $data['published'] = isset($request['published']);
+
           Car::create($data);
-       return 'done';
+          return 'done';
     }
 
     /**

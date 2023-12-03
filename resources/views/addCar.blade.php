@@ -12,7 +12,7 @@
 
 <div class="container">
   <h2>Add Car</h2>
-  <form action="{{route ('storeCar') }}" method="post">
+  <form action="{{route ('storeCar') }}" method="post" enctype="multipart/form-data">
     @csrf
     <div class="form-group">
       <label for="title">Title:</label>
@@ -26,7 +26,7 @@
     <div class="form-group">
       <label for="price">Price:</label>
       <input type="number" class="form-control" id="price" placeholder="Enter Price" name="price" value="{{old('price')}}">
-         @error('carTitle')
+         @error('price')
          <div class="alert alert-warning" role="alert">
           {{$message}}
          </div>
@@ -35,14 +35,26 @@
     <div class="form-group">
         <label for="description">Description:</label>
         <textarea class="form-control" rows="5" id="description" name="description">{{old('description')}}</textarea>
-        @error('carTitle')
+        @error('description')
          <div class="alert alert-warning" role="alert">
           {{$message}}
          </div>
         @enderror
       </div> 
+      <div class="form-group">
+            <label for="image">Image:</label>
+            <input type="file" class="form-control" id="image" name="image" value="{{ old('image') }}">
+            @error('image')
+                {{ $message }}
+            @enderror
+        </div>  
     <div class="checkbox">
-      <label><input type="checkbox" name="published" > Published</label>
+      <label><input type="checkbox" name="published" value="{{old('published')}}"> Published</label>
+      @error('published')
+         <div class="alert alert-warning" role="alert">
+          {{$message}}
+         </div>
+        @enderror
     </div>
     <button type="submit" class="btn btn-default">Add</button>
   </form>

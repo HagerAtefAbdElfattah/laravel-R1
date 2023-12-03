@@ -9,5 +9,5 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class Car extends Model
 {
     use HasFactory, softDeletes;
-    protected $fillable =['carTitle', 'price', 'description', 'published'];
+    protected $fillable =['carTitle', 'price', 'description', 'published', 'image'];
 }
