@@ -46,19 +46,19 @@ class CarController extends Controller
     //    $car->save();
         //   $data = $request->only($this->columns);
         //   $data['published'] = isset($data['published'])? true:false;
-        $messages=[
+           $messages=[
             'carTitle.required'=>'Title is required',
             'price.required'=>'This is A Number',
             'description.required'=> 'يجب ادخال نص دون ارقام',
             ];
-         $data = $request->validate([
+           $data = $request->validate([
             'carTitle'=>'Required|string|max:100',
             'price' => 'Required|integer',
             'description'=>'Required|string',
             'image' => 'required|mimes:png,jpg,jpeg|max:2048',
              ], $messages);
 
-             $fileName = $this->uploadFile($request->image, 'assets\images');
+          $fileName = $this->uploadFile($request->image, 'assets\images');
           $data['image']=$fileName;
           $data['published'] = isset($request['published']);
 
@@ -87,12 +87,34 @@ class CarController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, string $id):RedirectResponse
     {
-        $data = $request->only($this->columns);
-        $data['published']=isset($data['published'])? true:false;
-        car::where('id', $id)->update($data);
-        return '<script>alert("updated successfully")</script>';
+        // $data = $request->only($this->columns);
+        // $data['published']=isset($data['published'])? true:false;
+        
+         $messages=[
+            'carTitle.required'=>'Title is required',
+            'price.required'=>'This is A Number',
+            'description.required'=> 'يجب ادخال نص دون ارقام',
+            ];
+         $data = $request->validate([
+            'carTitle'=>'Required|string|max:100',
+            'price' => 'Required|integer',
+            'description'=>'Required|string'
+             ], $messages);
+
+          if (isset($request->image)) {
+            $request->validate([ 'image' => 'required|mimes:png,jpg,jpeg|max:2048']);
+            $fileName = $this->uploadFile($request->image,'assets\images');
+            
+          }else {
+            $fileName = $request->oldImage;
+          }
+          $data['image'] = $fileName;
+          $data['published'] = isset($request['published']);
+          car::where('id', $id)->update($data);
+
+        return redirect('cars');
     }
 
     /**
