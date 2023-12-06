@@ -195,3 +195,9 @@ Route::get('forceDeleteNews/{id}', [NewsController::class, 'forceDelete']);
 
 Route::get('showUpload', [ExampleController::class, 'showUpload']);
 Route::post('upload', [ExampleController::class, 'upload'])->name('upload');
+
+// -------------------session9---------------------------------------------------------
+
+
+Route::get('place', [ExampleController::class, 'place']);
+Route::get('blog1',[ExampleController::class, 'blog1']);

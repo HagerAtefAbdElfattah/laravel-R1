@@ -18,18 +18,28 @@
     <div class="form-group">
       <label for="title">Title:</label>
       <input type="text" class="form-control" id="title" placeholder="Enter title" name="carTitle" value="{{$car->carTitle}}">
+      @error('carTitle')
+                {{ $message }}
+      @enderror
     </div>
     <div class="form-group">
       <label for="price">Price:</label>
       <input type="number" class="form-control" id="price" placeholder="Enter Price" name="price" value="{{$car->price}}" >
+      @error('price')
+                {{ $message }}
+      @enderror
     </div>
     <div class="form-group">
         <label for="description">Description:</label>
         <textarea class="form-control" rows="5" id="description" name="description" >{{$car->description}}</textarea>
+        @error('description')
+                {{ $message }}
+        @enderror
     </div> 
     <div class="form-group">
         <label for="image">Image:</label>
         <input type="file" class="form-control" id="image" name="image" value="{{ $car->image }}" >
+        <img src="{{asset ('assets/images/'.$car->image)}}" alt="cars" width="200px" >
         <!-- the hidden input for the image so it won't be updated if there is no new value -->
         <input type="hidden" name="oldImage" value="{{$car->image}}">
             @error('image')

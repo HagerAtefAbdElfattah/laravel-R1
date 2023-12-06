@@ -91,7 +91,13 @@ class CarController extends Controller
     {
         // $data = $request->only($this->columns);
         // $data['published']=isset($data['published'])? true:false;
-        
+        // -----------you can use the messages in a method
+        // public function messages(){
+        // return [
+        //     'carTitle.required'=>'Title is required',
+        //     'description.required'=> 'should be text',
+        // ];
+        // }
          $messages=[
             'carTitle.required'=>'Title is required',
             'price.required'=>'This is A Number',

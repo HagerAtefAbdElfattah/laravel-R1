@@ -28,8 +28,18 @@ class ExampleController extends Controller
       //   $path = 'assets/images';
       //   $request->image->move($path, $file_name);
       $fileName = $this->uploadFile($request->image, 'assets\images');
-        return $fileName;
+      return $fileName;
+  }
+   //   -------------------------------------------------------------------------------------------
+ 
+   // ---------------------------session 9----------------------------------
+   public function place(){
+      return view("place");
   }
 
+  public function blog1(){
+   return view('blog1');
+}
+  
   
 }
