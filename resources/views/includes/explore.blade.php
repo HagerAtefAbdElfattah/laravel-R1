@@ -3,7 +3,7 @@
 	     @csrf
 			<div class="container">
 				<div class="section-header">
-					<h2>explore</h2>
+					<a href="extendExplore/"><h2>explore</h2></a>
 					<p>Explore New place, food, culture around the world and many more</p>
 				</div><!--/.section-header-->
 				<div class="explore-content">

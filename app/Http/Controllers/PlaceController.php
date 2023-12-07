@@ -94,4 +94,11 @@ class PlaceController extends Controller
     {
         //
     }
+    public function explore()
+    {
+        // to show the "explore" section with the layout ->yield and extend----by press the "explore" button in "place" homepage
+        $places = Place::get();
+        return view("extendExplore", compact('places'));
+        
+    }
 }

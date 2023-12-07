@@ -209,5 +209,6 @@ Route::get('blog1',[ExampleController::class, 'blog1']);
 Route::get('place', [PlaceController::class, 'index']);
 Route::get('addPlaces',[PlaceController::class, 'create']);
 Route::post('storePlaces',[PlaceController::class, 'store'])->name('storePlaces');
+Route::get('extendExplore',[PlaceController::class, 'explore'])->name('extendExplore');
 Route::get('tours/{id}',[PlaceController::class, 'show'])->name('tours');
 
