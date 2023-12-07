@@ -39,7 +39,15 @@ class ExampleController extends Controller
 
   public function blog1(){
    return view('blog1');
-}
+  }
+
+  public function tours(){
+   return view('tours');
+  }
+
+  public function addPlaces(){
+   return view('addPlaces');
+  }
   
   
 }

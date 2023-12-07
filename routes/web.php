@@ -5,6 +5,7 @@ use App\Http\Controllers\ExampleController;
 use App\Http\Controllers\AddCar;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\PlaceController;
 use App\Models\News;
 
 /*
@@ -199,5 +200,14 @@ Route::post('upload', [ExampleController::class, 'upload'])->name('upload');
 // -------------------session9---------------------------------------------------------
 
 
-Route::get('place', [ExampleController::class, 'place']);
+
 Route::get('blog1',[ExampleController::class, 'blog1']);
+
+
+// --------------task 9----------------------------------------------------------------
+
+Route::get('place', [PlaceController::class, 'index']);
+Route::get('addPlaces',[PlaceController::class, 'create']);
+Route::post('storePlaces',[PlaceController::class, 'store'])->name('storePlaces');
+Route::get('tours/{id}',[PlaceController::class, 'show'])->name('tours');
+
