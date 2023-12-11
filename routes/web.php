@@ -212,3 +212,10 @@ Route::post('storePlaces',[PlaceController::class, 'store'])->name('storePlaces'
 Route::get('extendExplore',[PlaceController::class, 'explore'])->name('extendExplore');
 Route::get('tours/{id}',[PlaceController::class, 'show'])->name('tours');
 
+// ----------------Task 10----------------------------------------------------------------
+
+
+Route::get('placeTable',[PlaceController::class, 'placeTable']);
+Route::get('deletePlace/{id}', [PlaceController::class, 'destroy']);
+Route::get('trashedPlace', [PlaceController::class, 'trashed']);
+Route::get('restorePlace/{id}', [PlaceController::class, 'restore']);

@@ -91,15 +91,46 @@ class PlaceController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(string $id):RedirectResponse
     {
-        //
+       Place:: where('id', $id)->delete();
+       return redirect('placeTable');
     }
     public function explore()
     {
         // to show the "explore" section with the layout ->yield and extend----by press the "explore" button in "place" homepage
-        $places = Place::get();
+        // $places = Place::get();
+        $places = Place::latest()->take(6)->get();
         return view("extendExplore", compact('places'));
         
     }
+
+    public function placeTable()
+    {
+        // to show the "places" in database in a table of page "placeTable"
+        $places = Place::get();
+        return view("placeTable", compact('places'));
+        
+    }
+    
+    /**
+     * The trashed data.
+     */
+    public function trashed() 
+    {
+        $places = Place::onlyTrashed()->get();
+       return view('trashedPlace',compact('places'));
+    }
+
+    /**
+     * To restore the soft deleted data.
+     */
+    public function restore(string $id) : RedirectResponse
+    {
+       Place:: where('id', $id )->restore();
+        return redirect('placeTable');
+    }
+
+
+   
 }
