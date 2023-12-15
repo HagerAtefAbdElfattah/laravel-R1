@@ -7,12 +7,13 @@ use Illuminate\Http\RedirectResponse;
 use App\Models\Car;
 use App\Models\Category;
 use App\Traits\Common;
+use PhpParser\Node\Stmt\Return_;
 use Symfony\Contracts\Service\Attribute\Required;
 
 class CarController extends Controller
 {
     use Common;
-    private $columns = ['carTitle','price', 'description', 'published','image'];
+    private $columns = ['carTitle','price', 'description', 'published','image','category_id'];
     /**
      * Display a listing of the resource.
      */
@@ -34,7 +35,7 @@ class CarController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request):RedirectResponse
     {
     //    $car = new Car;
     //    $car->carTitle =$request->carTitle;
@@ -52,14 +53,14 @@ class CarController extends Controller
             'carTitle.required'=>'Title is required',
             'price.required'=>'This is A Number',
             'description.required'=> 'يجب ادخال نص دون ارقام',
-            'category.required'=> 'يجب ادخال نص دون ارقام'
+            'category_id.required'=> 'You must choose a category'
             ];
            $data = $request->validate([
             'carTitle'=>'Required|string|max:100',
             'price' => 'Required|integer',
             'description'=>'Required|string',
             'image' => 'required|mimes:png,jpg,jpeg|max:2048',
-
+            'category_id'=>'Required|in:1,2'
              ], $messages);
 
           $fileName = $this->uploadFile($request->image, 'assets\images');
@@ -67,7 +68,7 @@ class CarController extends Controller
           $data['published'] = isset($request['published']);
 
           Car::create($data);
-          return 'done';
+          return redirect('cars');
     }
 
     /**
@@ -85,7 +86,9 @@ class CarController extends Controller
     public function edit(string $id)
     {
         $car = Car:: FindOrFail($id);
-        return view('updateCar',compact('car'));
+        // this variable $categories is for displaying the category in the foreach--->
+        $categories = Category::select('id', 'categoryName')->get();
+        return view('updateCar',compact('car','categories'));
     }
 
     /**
@@ -106,11 +109,13 @@ class CarController extends Controller
             'carTitle.required'=>'Title is required',
             'price.required'=>'This is A Number',
             'description.required'=> 'يجب ادخال نص دون ارقام',
+            'category_id.required'=> 'You must choose a category'
             ];
          $data = $request->validate([
             'carTitle'=>'Required|string|max:100',
             'price' => 'Required|integer',
-            'description'=>'Required|string'
+            'description'=>'Required|string',
+            'category_id'=>'Required|in:1,2',
              ], $messages);
 
           if (isset($request->image)) {
@@ -123,8 +128,8 @@ class CarController extends Controller
           $data['image'] = $fileName;
           $data['published'] = isset($request['published']);
           car::where('id', $id)->update($data);
-
-        return redirect('cars');
+         
+          return redirect('cars');
     }
 
     /**

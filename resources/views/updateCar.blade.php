@@ -36,6 +36,17 @@
                 {{ $message }}
         @enderror
     </div> 
+    {{-- task--11 --}}
+    <div class="form-group">
+      <label for="category">Category:</label>
+      <select name="category_id" id="category">
+       <option  value="{{$car->category_id}}">{{$car->category->categoryName }}</option>
+         @foreach($categories as $cat)
+           <option value="{{$cat->id}}">{{$cat->categoryName}}</option>
+         @endforeach
+      </select>
+    </div> 
+    {{-- end task-- 11---}}
     <div class="form-group">
         <label for="image">Image:</label>
         <input type="file" class="form-control" id="image" name="image" value="{{ $car->image }}" >

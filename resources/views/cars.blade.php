@@ -20,6 +20,7 @@
         <th>Price</th>
         <th>Content</th>
         <th>Published</th>
+        <th>category</th>
         <th>Edit</th>
         <th>ShowaCar</th>
         <th>Delete</th>
@@ -39,6 +40,7 @@
             no
             @endif
         </td>
+        <td>{{ $car->category->categoryName }}</td>
         <td><a href="editCar/{{ $car->id }}">Edit</a></td>
         <td><a href="carDetails/{{ $car->id }}">CarDetails</a></td>
         <td><a href="deleteCar/{{ $car->id }}">Delete</a></td>
