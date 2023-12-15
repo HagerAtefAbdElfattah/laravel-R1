@@ -48,14 +48,28 @@
                 {{ $message }}
             @enderror
         </div>  
-    <div class="checkbox">
-      <label><input type="checkbox" name="published" value="{{old('published')}}"> Published</label>
-      @error('published')
-         <div class="alert alert-warning" role="alert">
-          {{$message}}
-         </div>
-        @enderror
-    </div>
+        <div class="form-group">
+          <label for="shortDescription">Select Category</label>
+           <select name="category_id" id="">
+              <option value="">Select Category</option>
+              @foreach($categories as $category)
+              <option value="{{$category->id}}">{{$category->categoryName}}</option>
+              @endforeach
+           </select>
+              @error('published')
+               <div class="alert alert-warning" role="alert">
+               {{$message}}
+               </div>
+              @enderror
+        </div>
+        <div class="checkbox">
+          <label><input type="checkbox" name="published" value="{{old('published')}}"> Published</label>
+            @error('published')
+             <div class="alert alert-warning" role="alert">
+              {{$message}}
+              </div>
+             @enderror
+        </div>
     <button type="submit" class="btn btn-default">Add</button>
   </form>
 </div>

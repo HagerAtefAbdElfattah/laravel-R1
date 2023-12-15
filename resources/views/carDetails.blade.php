@@ -26,6 +26,10 @@
 					<div class="col-md-7"><input type="text" value="{{$car->price}}" class="form-control form-control-lg" id="price6" name="price" ></div>
 				</div>
 				<hr class="bg-transparent border-0 py-1" />
+				<div class="form-group mb-3 row"><label for="category" class="col-md-5 col-form-label">Category</label>
+					<div class="col-md-7"><input type="text" value="{{$car->category->categoryName}}" class="form-control form-control-lg" id="category" name="category" ></div>
+				</div>
+				<hr class="bg-transparent border-0 py-1" />
 				<div class="form-group mb-3 row"><label for="model7" class="col-md-5 col-form-label">Published</label>
 					<div class="col-md-7"><input type="checkbox" id="model7" name="published"></div>
 				</div>

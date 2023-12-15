@@ -11,10 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // I made the new schema as category in "cars" because I've already made softDelete in "places" last task.
-        //  this's for more exercise-------
-        Schema::table('cars', function (Blueprint $table) {
-            $table->string('category',100);
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('categoryName');
+            $table->timestamps();
         });
     }
 
@@ -23,8 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('cars', function (Blueprint $table) {
-            //
-        });
+        Schema::dropIfExists('categories');
     }
 };

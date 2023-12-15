@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Models\Car;
+use App\Models\Category;
 use App\Traits\Common;
 use Symfony\Contracts\Service\Attribute\Required;
 
@@ -26,7 +27,8 @@ class CarController extends Controller
      */
     public function create()
     {
-       return view('addCar');
+        $categories = Category::select('id', 'categoryName')->get();
+       return view('addCar',compact('categories'));
     }
 
     /**
@@ -50,12 +52,14 @@ class CarController extends Controller
             'carTitle.required'=>'Title is required',
             'price.required'=>'This is A Number',
             'description.required'=> 'يجب ادخال نص دون ارقام',
+            'category.required'=> 'يجب ادخال نص دون ارقام'
             ];
            $data = $request->validate([
             'carTitle'=>'Required|string|max:100',
             'price' => 'Required|integer',
             'description'=>'Required|string',
             'image' => 'required|mimes:png,jpg,jpeg|max:2048',
+
              ], $messages);
 
           $fileName = $this->uploadFile($request->image, 'assets\images');
