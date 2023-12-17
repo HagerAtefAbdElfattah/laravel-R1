@@ -115,7 +115,7 @@ class CarController extends Controller
             'carTitle'=>'Required|string|max:100',
             'price' => 'Required|integer',
             'description'=>'Required|string',
-            'category_id'=>'Required|in:1,2',
+            'category_id'=>'Required',
              ], $messages);
 
           if (isset($request->image)) {
