@@ -41,7 +41,13 @@ class DemoMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            // the templete here is by markdown. it can be made also by html or text.
+            // the template here is by markdown. it can be made also by html or text.
+            // html code in 'emails.demoMail' would be =>
+            // view: 'emails.demoMail',
+            // with:[
+            //     'content'=>$this->data
+            // ],
+            
             markdown: 'emails.demoMail',
             with:[
                 'content'=>$this->data['content']

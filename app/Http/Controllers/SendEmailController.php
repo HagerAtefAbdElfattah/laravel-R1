@@ -13,6 +13,7 @@ class SendEmailController extends Controller
     }
 
     public function send(Request $request){
+        
         $data =[
             'name'=>$request->name,
             'email'=>$request->email,
