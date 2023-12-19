@@ -6,6 +6,7 @@ use App\Http\Controllers\AddCar;
 use App\Http\Controllers\CarController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\PlaceController;
+use App\Http\Controllers\SendEmailController;
 use App\Models\News;
 
 /*
@@ -63,79 +64,79 @@ Route::get('/', function () {
 
 
 // ----------------task2-----------------------------------------------------------
-Route::get('about', function () {
-    return "<h1> This is a laravel learning project </h1>";
-});
+// Route::get('about', function () {
+//     return "<h1> This is a laravel learning project </h1>";
+// });
 
-Route::get('contactUs', function () {
-    return "<h1> You can contact us on support page </h1>" ;
-});
+// Route::get('contactUs', function () {
+//     return "<h1> You can contact us on support page </h1>" ;
+// });
 
-Route::prefix('support')->group(function () {
+// Route::prefix('support')->group(function () {
    
-    Route::get('/', function(){
-    return "<h1> You can contact us by chat, call or ticket </h1>";
-    });
+//     Route::get('/', function(){
+//     return "<h1> You can contact us by chat, call or ticket </h1>";
+//     });
 
-    Route::get('chat/{name?}/{age?}', function($name, $age=0){
-        $chatmsg = 'the username is : ' . $name;
-        if($age > 0){
-            $chatmsg .= ' and age is: ' . $age ;
-       }
-        return $chatmsg ;
-    })->where(['age'=>'[0-9]+', 'name'=>'[a-zA-Z0-9]+']);
+//     Route::get('chat/{name?}/{age?}', function($name, $age=0){
+//         $chatmsg = 'the username is : ' . $name;
+//         if($age > 0){
+//             $chatmsg .= ' and age is: ' . $age ;
+//        }
+//         return $chatmsg ;
+//     })->where(['age'=>'[0-9]+', 'name'=>'[a-zA-Z0-9]+']);
 
-    Route::get('call/{callname}/{num?}', function($callname , $num=0){
-        $callmsg = 'the username is : ' . $callname;
-            if($num > 0){
-                $callmsg .= ' and your number is: ' . $num ;
-            }
-            return $callmsg ;
-    })->where(['num'=>'[0-9]{8,11}+', 'callname'=>'[a-zA-Z]+']);
-            //    {8,11} only 8 numbers or 11 numbers
-    Route::get('ticket', function(){
-    return 'tickets home page';
-    });
-});    
+//     Route::get('call/{callname}/{num?}', function($callname , $num=0){
+//         $callmsg = 'the username is : ' . $callname;
+//             if($num > 0){
+//                 $callmsg .= ' and your number is: ' . $num ;
+//             }
+//             return $callmsg ;
+//     })->where(['num'=>'[0-9]{8,11}+', 'callname'=>'[a-zA-Z]+']);
+//             //    {8,11} only 8 numbers or 11 numbers
+//     Route::get('ticket', function(){
+//     return 'tickets home page';
+//     });
+// });    
 
-Route::prefix('training')->group(function () {
+// Route::prefix('training')->group(function () {
    
-    Route::get('/', function(){
-    return 'training home page';
-    });
+//     Route::get('/', function(){
+//     return 'training home page';
+//     });
 
-    Route::get('HR', function(){
-    return 'HR home page';
-    });
+//     Route::get('HR', function(){
+//     return 'HR home page';
+//     });
 
-    Route::get('ICT', function(){
-    return 'ICT home page';
-    });
+//     Route::get('ICT', function(){
+//     return 'ICT home page';
+//     });
 
-    Route::get('markting', function(){
-    return 'markting home page';
-    });
+//     Route::get('markting', function(){
+//     return 'markting home page';
+//     });
 
-    Route::get('logistics', function(){
-    return 'logistics home page';
-    });
-});  
+//     Route::get('logistics', function(){
+//     return 'logistics home page';
+//     });
+// });  
 
 // ----------session3---------------------------------------------------------------------------------------------------
 
-Route::get('cv', function(){
-    return view('cv');
-    });
+// Route::get('cv', function(){
+//     return view('cv');
+//     });
 
-Route::get('login', function(){
-      return view('login');
-      });
+// Route::get('login', function(){
+//       return view('login');
+//       });
   
-Route::post('receive', function(){
-        return "Data receive";
-        })->name('receive') ;   
+// Route::post('receive', function(){
+//         return "Data receive";
+//         })->name('receive') ;   
 
-Route::get('test1', [ExampleController::class, 'test1']);
+// Route::get('test1', [ExampleController::class, 'test1']);
 
 // ---------------task3-------------------------------------------------------------------------------------------------
 
@@ -219,6 +220,14 @@ Route::get('placeTable',[PlaceController::class, 'placeTable']);
 Route::get('deletePlace/{id}', [PlaceController::class, 'destroy']);
 Route::get('trashedPlace', [PlaceController::class, 'trashed']);
 Route::get('restorePlace/{id}', [PlaceController::class, 'restore']);
+
+// -----------------Session12--------------------------------------------------------------------------------
 Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
+// ------------------Task 12-----------------------------------------------------------------------------------
+
+Route::get('contactUs', [SendEmailController::class, 'display']);
+Route::post('send', [SendEmailController::class, 'send'])->name('send');
