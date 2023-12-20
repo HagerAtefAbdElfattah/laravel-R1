@@ -48,6 +48,12 @@ class ExampleController extends Controller
   public function addPlaces(){
    return view('addPlaces');
   }
+
+  public function mySession(){
+   session()->put('test', 'First Laravel session');
+    $data = session('test');
+   return view('session', compact('data'));
+}
   
   
 }

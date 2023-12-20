@@ -160,7 +160,7 @@ Route::post('News', [NewsController::class, 'store'])->name('News');
 
 // --------------------session 5 $ 6------------------------------------------------------
 
-Route::get('cars', [CarController::class, 'index']);
+Route::get('cars', [CarController::class, 'index'])->middleware('verified');
 Route::get('editCar/{id}', [CarController::class, 'edit']);
 Route::put('updateCar/{id}', [CarController::class, 'update'])->name('updateCar');
 
@@ -230,5 +230,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // ------------------Task 12-----------------------------------------------------------------------------------
 
 
-Route::get('contactUs', [SendEmailController::class, 'display']);
+Route::get('contactUs', [SendEmailController::class, 'create']);
 Route::post('send', [SendEmailController::class, 'send'])->name('send');
+
+
+Route::get('session', [ExampleController::class, 'mySession']);
