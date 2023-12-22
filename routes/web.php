@@ -233,5 +233,13 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 Route::get('contactUs', [SendEmailController::class, 'create']);
 Route::post('send', [SendEmailController::class, 'send'])->name('send');
 
-
+// --------------------session13-------------------------------------------------------------------------------
 Route::get('session', [ExampleController::class, 'mySession']);
+
+
+
+// --------------------task 13---------------------------------------------------------------------------------
+
+Route::get('demo', function(){
+    return "Welcome to your first Middleware";
+})->middleware('demo');
