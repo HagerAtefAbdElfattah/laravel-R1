@@ -230,8 +230,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // ------------------Task 12-----------------------------------------------------------------------------------
 
 
-Route::get('contactUs', [SendEmailController::class, 'create']);
-Route::post('send', [SendEmailController::class, 'send'])->name('send');
+
 
 // --------------------session13-------------------------------------------------------------------------------
 Route::get('session', [ExampleController::class, 'mySession']);
@@ -243,3 +242,14 @@ Route::get('session', [ExampleController::class, 'mySession']);
 Route::get('demo', function(){
     return "Welcome to your first Middleware";
 })->middleware('demo');
+
+// -------------Session14------------------------------------------------------------------
+
+Route::group(
+    [
+        'prefix' => LaravelLocalization::setLocale(),
+        'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
+    ], function(){ 
+Route::get('contactUs', [SendEmailController::class, 'create']);
+Route::post('send', [SendEmailController::class, 'send'])->name('send');
+    });

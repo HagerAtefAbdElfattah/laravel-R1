@@ -12,11 +12,15 @@
 
 <body class="bg-dark">
   <div class="container">
+    <div>
+      <a href="{{ LaravelLocalization::getLocalizedURL('en') }}">English</a>
+      <a href="{{ LaravelLocalization::getLocalizedURL('ar') }}">Arabic</a>
+  </div>
     <div class="row justify-content-center">
       <div class="col-md-4 mt-5 bg-light rounded">
         <h1 class="text-center font-weight-bold text-primary">Contact Us</h1>
         <hr class="bg-light">
-        <h5 class="text-center text-success"></h5>
+        <h5 class="text-center text-success">{{__('messages.contact')}}</h5>
         <form action="{{route('send')}}" method="post" enctype="multipart/form-data" id="form-box" class="p-2">
             @csrf
           <div class="form-group input-group">
