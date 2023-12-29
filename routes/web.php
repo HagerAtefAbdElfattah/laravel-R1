@@ -149,8 +149,8 @@ Route::get('/', function () {
 
 // // ------------Session4------------------------------------------------------------------------------------
 
-Route::get('addCar', [CarController::class, 'create']);
-Route::post('storeCar',[CarController::class, 'store'])->name('storeCar');
+
+
 
 // // ----------------task 4--------------------------------------------------------------------------------------------------
 
@@ -252,4 +252,9 @@ Route::group(
     ], function(){ 
 Route::get('contactUs', [SendEmailController::class, 'create']);
 Route::post('send', [SendEmailController::class, 'send'])->name('send');
+
+// -------Task 14-----------
+
+Route::get('addCar', [CarController::class, 'create']);
+Route::post('storeCar',[CarController::class, 'store'])->name('storeCar');
     });

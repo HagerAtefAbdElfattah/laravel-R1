@@ -50,10 +50,11 @@ class CarController extends Controller
         //   $data = $request->only($this->columns);
         //   $data['published'] = isset($data['published'])? true:false;
            $messages=[
-            'carTitle.required'=>'Title is required',
-            'price.required'=>'This is A Number',
-            'description.required'=> 'يجب ادخال نص دون ارقام',
-            'category_id.required'=> 'You must choose a category'
+            'carTitle.required'=>__('messages.carTitleError'),
+            'price.required'=>__('messages.priceError'),
+            'description.required'=>__('messages.describtionError'),
+            'image.required'=>__('messages.imageError'),
+            'category_id.required'=> __('messages.categoryError'),
             ];
            $data = $request->validate([
             'carTitle'=>'Required|string|max:100',
