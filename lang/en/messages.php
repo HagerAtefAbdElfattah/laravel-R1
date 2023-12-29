@@ -50,6 +50,4 @@ return [
     'describtionError' => 'please write a text',
     'imageError' => 'The image is required',
     'categoryError' => 'You must choose a category',
-
-     
 ];

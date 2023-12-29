@@ -61,7 +61,7 @@ class CarController extends Controller
             'price' => 'Required|integer',
             'description'=>'Required|string',
             'image' => 'required|mimes:png,jpg,jpeg|max:2048',
-            'category_id'=>'Required|in:1,2'
+            'category_id'=>'Required'
              ], $messages);
 
           $fileName = $this->uploadFile($request->image, 'assets\images');
