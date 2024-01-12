@@ -250,11 +250,13 @@ Route::group(
         'prefix' => LaravelLocalization::setLocale(),
         'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
     ], function(){ 
-Route::get('contactUs', [SendEmailController::class, 'create']);
-Route::post('send', [SendEmailController::class, 'send'])->name('send');
+            Route::get('contactUs', [SendEmailController::class, 'create'])->name('contactUs');
+            Route::post('send', [SendEmailController::class, 'send'])->name('send');
 
-// -------Task 14-----------
+            // -------Task 14-----------
 
-Route::get('addCar', [CarController::class, 'create']);
-Route::post('storeCar',[CarController::class, 'store'])->name('storeCar');
-    });
+            Route::get('addCar', [CarController::class, 'create']);
+            Route::post('storeCar',[CarController::class, 'store'])->name('storeCar');
+            });
+// ----------------Task16-----------------------
+

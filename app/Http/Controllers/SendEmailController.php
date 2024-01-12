@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 use App\Mail\DemoMail;
+use App\Jobs\DemoMailJob;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
@@ -19,7 +20,7 @@ class SendEmailController extends Controller
             'subject'=>$request->subject,
             'content'=>$request->content,
         ];
-        Mail::to('hager@example.com')->send(New DemoMail($data));
-        return 'Done';
+          dispatch(new DemoMailJob($data)) ;
+           return view('contactUsReplay');
     }
 }
